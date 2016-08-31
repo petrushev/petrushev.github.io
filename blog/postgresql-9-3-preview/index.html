@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Postgresql 9.3 preview — petrushev@github</title>
+
+    
+    <link  href="../../static/css/bootstrap.min.css" rel="stylesheet">
+
+    
+    <link  href="../../static/css/style.css" rel="stylesheet">
+
+    
+    
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">petrushev@github</a>
+            </div>
+            
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+			        <li><a href="../../"><span class="glyphicon glyphicon-home"></span></a></li>
+			        
+			          <li><a href="../../projects/">Projects</a></li>
+			        
+			          <li class="active"><a href="../../blog/">Blog</a></li>
+			        
+			          <li><a href="../../contact/">Contact</a></li>
+			        
+                </ul>
+            </div>
+            
+        </div>
+        
+    </nav>
+
+    
+    <div class="container">
+	  <div class="page">
+	    
+  
+  <div class="blog-post col-md-8" itemscope itemtype="http://schema.org/Article">
+    <p class="headline">
+      
+        <h2 itemprop="headline" >Postgresql 9.3 preview</h2>
+      
+    </p>
+
+    <span rel="author" itemscope itemprop="author" itemtype="http://schema.org/Person" />
+      <link itemprop="url" href="https://petrushev.github.io/" />
+      <meta itemprop="name" content="Baze Petrushev" />
+    </span>
+
+    <p class="meta">
+      <time pubdate  datetime="2013-08-02"
+            itemprop="datePublished" itemtype="http://schema.org/Date" >
+        <span class="glyphicon glyphicon-time"></span>
+        published: 02 August, 2013
+      </time>
+    </p>
+
+    <hr/>
+
+    <div  itemprop="articleBody">
+    
+        <p>A release candidate for the newest version of Postgres was shipped this week. For me personally, the difference with this release is not that drastic compared to those new features added on 9.0, 9.1 and 9.2 which marked a new era, not just for Postgres, but for all RDBMS, especially now in the NoSQL hype. Heck, some of the features, like LISTEN/NOTIFY publish notification on events, are still missing from most of the so-called high-performance key-value or document datastores.</p>
+<p>What I admire most about the Postgres community is its ability to develop on different features and not just focus on what some BDFL think is an important goal. Thus, changes in the new version, as well as always, occurred on all fronts: SQL semantics, special datatypes features, view-related features, replication and administration.</p>
+<h3>JSON</h3>
+<p>The 9.2 version saw the addition of JSON datatype, perceived to give great boost to schema-less data usage of Postgres. Of course, we could have always just dump any serialized JSON in a text field, but this datatype also bears the burden of maintaining valid JSON values, as well as opening new possibilities for building functions around it.</p>
+<p>The 9.3 version brings just that – new JSON functions and operators, so instead of building JSON support functions in your <a href="http://www.postgresql.org/docs/9.3/static/external-pl.html">favourite language</a> (perl, python, java, javascript, tcl, ruby, R, php, scheme), you have them <a href="http://www.postgresql.org/docs/9.3/static/functions-json.html">implemented natively</a>. Apart from getting specific parts from the value with a given index, key, or a complete path, you can also generate row set expanded from the outermost items, convert a row to JSON and vice versa and other things. The operators allowing you to access given key or path, open the possibility to index the column optimized for that key or path (remember: Postgresql has <a href="http://www.postgresql.org/docs/9.2/static/indexes-expressional.html">expression indexing</a>).</p>
+<p>Note: I was once asked if one can update a single key in a JSON field . The answer is: No, any update needs to have the complete new JSON value serialized and passed. If you have a field that is changed frequently – refactor it outside the JSON field; for any other wild uses I recommend datastores like Redis or Cassandra.</p>
+<h3>SQL Semantics</h3>
+<p><a href="http://www.postgresql.org/docs/9.3/static/queries-table-expressions.html#QUERIES-LATERAL">LATERAL JOIN</a>. It has an especially esoteric use. Put simply, you do a join with a table and a subquery, while at the same time, in the subquery you want to use columns from the table. Of course, you can complete a LATERAL JOIN by simply writing more complex subqueries, but people lived without WINDOW and WITH for a long time, yet they use these now without complaints.</p>
+<h3>Administration and replication</h3>
+<p><a href="http://www.postgresql.org/docs/9.3/static/app-pgdump.html">Parallel pg_dump</a>. Basically it will dump more than one table in separate processes by specifying -j jobs parameter.</p>
+<p><a href="http://www.postgresql.org/docs/9.3/static/kernel-resources.html#SYSVIPC">Shared memory</a> – This one I like pretty much, since every time I need to install Postgres I also need to change the shared_buffers parameter and tweak the system’s kernel parameters like SHMAX. Now, the 9.3 version switched to mmap for memory management and you won’t need to do this anymore.</p>
+<p>Replication has also been improved, now with the possibility of re-mastering (the process of one replica taking over as the master), in a streaming-only mode. There are still details to be announced on the replication improvements.</p>
+<h3>Triggers</h3>
+<p>The DDL workflow is apparently another active field for the Postgres community, and in this version there’s the addition of <a href="http://www.postgresql.org/docs/9.3/interactive/sql-createeventtrigger.html">triggers on DDL</a>. There are actually only three events: ddl_command_start, ddl_command_end and sql_drop, but then in the trigger function there is an implicit parameter called tg_tag, which is the <a href="http://www.postgresql.org/docs/9.3/interactive/event-trigger-matrix.html">name of the DDL</a> command issued.</p>
+<p>This can be very useful for preventing some DDL commands in some cases, or mounting additional responsibilities and features coupled with any changes to the structure of the database. And, coupled with the NOTIFY command, it can provide the build systems greater insight when debugging.</p>
+<h3>Views</h3>
+<p>There is constant work done on the views front. This versions big feature are the <a href="http://www.postgresql.org/docs/9.3/static/sql-creatematerializedview.html">materialized views</a>, Basically, they create a physical table instead of executing selection on each access, however, the data can become stale, because the user needs to reissue a refresh manually. I would say it still has some way to go until it works as intended.</p>
+<p>As for another esoteric corner of use cases, another feature delivers creation of recursive views.</p>
+<p>Finally, for those who use views extensively and know that the only way to make non-read-only view is to rig it with insert, update and delete triggers, this version bring the updateable views – which only works for simple views for one table, but it can save us from a lot of boilerplate triggers.</p>
+<h3>External data</h3>
+<p>The foreign data wrappers were added in 9.1, but only until now everyone can safely use them, since in the new version they are not read-only anymore, but writable. The catch is, however, that the foreign data wrapper feature is basically an API, and for each type of foreign datastore there should be a driver. There are quite a lot wrappers already (including the nosql datastores Couchdb, Mongodb, Redis and even Neo4j), but the only wrappers that support write, aside the Postgres, is Redis.</p>
+<h3>Postgres continues to move forward</h3>
+<p>I know it seems like a lot of new stuff, but except for the new JSON features, I would say this minor release saw less than its predecessors. However, it still shows the Postgres’ community dedication to adjust our favorite database to the new times which require faster retrieval, flexible data structures and scalability. The commitment can be seen in the promises for the 9.4 version, which includes background processes, MVCC improvements, partial aggregates and many more.</p>
+
+    
+    </div>
+
+    
+      
+
+      
+        <hr/>
+        tags:
+        
+          <a href="/tag/postgresql"><code>postgresql</code></a>
+        
+      
+
+    
+
+  </div>
+
+
+	  </div>
+    </div>
+
+
+    <footer>
+        <div class="row">
+            <div class="col-lg-12">
+            
+            </div>
+        </div>
+    </footer>
+
+    </div>
+
+    <script src="../../static/js/jquery.js"></script>
+    <script src="../../static/js/bootstrap.min.js"></script>
+
+</body>
+</html>

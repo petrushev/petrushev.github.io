@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>PyPy and the future of interpreted languages — petrushev@github</title>
+
+    
+    <link  href="../../static/css/bootstrap.min.css" rel="stylesheet">
+
+    
+    <link  href="../../static/css/style.css" rel="stylesheet">
+
+    
+    
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">petrushev@github</a>
+            </div>
+            
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+			        <li><a href="../../"><span class="glyphicon glyphicon-home"></span></a></li>
+			        
+			          <li><a href="../../projects/">Projects</a></li>
+			        
+			          <li class="active"><a href="../../blog/">Blog</a></li>
+			        
+			          <li><a href="../../contact/">Contact</a></li>
+			        
+                </ul>
+            </div>
+            
+        </div>
+        
+    </nav>
+
+    
+    <div class="container">
+	  <div class="page">
+	    
+  
+  <div class="blog-post col-md-8" itemscope itemtype="http://schema.org/Article">
+    <p class="headline">
+      
+        <h2 itemprop="headline" >PyPy and the future of interpreted languages</h2>
+      
+    </p>
+
+    <span rel="author" itemscope itemprop="author" itemtype="http://schema.org/Person" />
+      <link itemprop="url" href="https://petrushev.github.io/" />
+      <meta itemprop="name" content="Baze Petrushev" />
+    </span>
+
+    <p class="meta">
+      <time pubdate  datetime="2013-09-27"
+            itemprop="datePublished" itemtype="http://schema.org/Date" >
+        <span class="glyphicon glyphicon-time"></span>
+        published: 27 September, 2013
+      </time>
+    </p>
+
+    <hr/>
+
+    <div  itemprop="articleBody">
+    
+        <p>PyPy is Python implemented in Python. This means that the interpreter is written in Python, but what started as an experimental idea turned into a fast, efficient Python implementation with a JIT compiler that has the potential to implement other dynamic interpreted languages as well.</p>
+<p>Implementation of the Python 2 specification is done in RPython – the so-called restricted Python, which is a stripped down version. The constraints that RPython has on objects make it easier to infer their types. The PyPy tool chain then has an easy time translating the RPython program to C, JVM bytecode or CIL. It also builds a JIT compiler in the resulting interpreter.</p>
+<p>PyPy is capable of running any common Python code.</p>
+<h3>Speed</h3>
+<p>First and foremost – speed. PyPy's website maintains a page that's updated at each PyPy version which contains the accomplishments – various benchmarks and how much faster it is than those compared with CPython. These are kinda assumed, since PyPy has a JIT that compiles code bits to machine code at runtime, but what you can't assume is that PyPy can be even faster than C. This has been proven twice in edge cases where the dynamic nature of the problem combined with JIT compilation can be used to improve speed compared with a standard static compilation: <a href="https://morepypy.blogspot.mk/2011/02/pypy-faster-than-c-on-carefully-crafted.html">here</a> and <a href="https://morepypy.blogspot.mk/2011/08/pypy-is-faster-than-c-again-string.html">here</a>.</p>
+<h3>Portability</h3>
+<p>We mentioned this earlier, but the toolchain used to build PyPy to a JIT-powered C build can also build the same to JVM bytecode or CIL flavors, which are the rough equivalent of Jython and IronPython (this process is often called translation). For more information, read the <a href="http://www.aosabook.org/en/pypy.html">chapter</a> in the second volume of the book The Architecture of Open Source Applications.</p>
+<h3>Memory optimization</h3>
+<p>The garbage collection has been improved, and it is still a field of development for PyPy, some programs might take less memory when working under it.</p>
+<h3>Sandboxing</h3>
+<p>A different approach to running untrusted Python code. Rather than limiting language and standard library features that can possibly harm the system, PyPy reroutes the system calls to an external process handling the safe policy.</p>
+<h3>Numpy</h3>
+<p>A substantial portion of Python users actually live in the worlds of academia and data analyis doing numerical computations. Numpy was created in that world and spawned a multitude of libraries like scipy, matplotlib, scikits and pandas which replaced Matlab and Mathematica as slow and/or expensive.</p>
+<p>But…anyone who has used some of these libraries knows that compiling Numpy requires the Fortran language, as well as the immensely optimized libraries such as blas and lapack, written in Fortran which are de facto standards in numerical computations.</p>
+<p>For CPython, there is a tool f2py for creating wrappers around Fortran libraries, and this is how the CPython's Numpy is created. Similarly, a f2pypy is a tool that creates PyPy wrappers, but it's still not complete and has some rough edges.</p>
+<p>Numpy remains one of the greatest challenges for the PyPy developers, but there is a great progress already <a href="http://morepypy.blogspot.com/2013/08/numpy-road-forward.html">on the way</a>.</p>
+<h3>What is cffi?</h3>
+<p>When you write extensions for Python that uses some kind of C library, you need to write using C and additionally you need to know Cython, SWIG or ctypes. For Python programmers not properly introduced to C, this can have great learning curve. But for PyPy, this is practically impossible.</p>
+<p>Fortunately, cffi came to relieve this situation. It is basically a Python interface for foreign functions in C. It is not a part of PyPy, meaning that cffi can be used from CPython as well. The user simply calls C code from Python, there is no need to learn specific mediator APIs, and there is no C code that needs to be written. The <a href="http://cffi.readthedocs.org/en/release-0.7/#examples">examples</a> can provide an additional demonstration.</p>
+<h3>Sprawl</h3>
+<p>A couple of months ago, PyPy saw its first release on the ARM platform. So you can run PyPy on Raspberry Pi. This leaves the ARM door open for any language optimal enough as PyPy, and there are some languages already implemented with the RPython toolchain.</p>
+<p>Most notably, there is Topaz, which is a PyPy-like implementation of Ruby. An interesting implementation of PyPy is created with JavaScript as a backend, PyPy.js. Conversely, a GSOC project was done as Javascript implementation in Python, lang-js, but currently is not in development. As a pet project, the people from PyPy also implemented an incomplete PHP implementation with the RPython translator. And we can see that someone did their bachelor thesis implementing Pyrolog – a Prolog implementation in RPython.</p>
+
+    
+    </div>
+
+    
+      
+
+      
+        <hr/>
+        tags:
+        
+          <a href="/tag/python"><code>python</code></a>
+        
+          <a href="/tag/pypy"><code>pypy</code></a>
+        
+          <a href="/tag/jit"><code>jit</code></a>
+        
+      
+
+    
+
+  </div>
+
+
+	  </div>
+    </div>
+
+
+    <footer>
+        <div class="row">
+            <div class="col-lg-12">
+            
+            </div>
+        </div>
+    </footer>
+
+    </div>
+
+    <script src="../../static/js/jquery.js"></script>
+    <script src="../../static/js/bootstrap.min.js"></script>
+
+</body>
+</html>
