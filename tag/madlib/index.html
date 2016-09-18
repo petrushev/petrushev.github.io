@@ -62,44 +62,47 @@
     <div class="container">
 	  <div class="page">
 	    
-    <div class="row">
-      <h4>Tag: <code>madlib</code></h4>
-      
+    <div class="row" itemscope itemtype="http://schema.org/SearchResultsPage">
+      <p class="meta">
         
-  <div class="blog-post col-md-8" itemscope itemtype="http://schema.org/Article">
-    <p class="headline">
-      
-          <h2  itemprop="headline" ><a href="../../blog/data-analysis-extension-for-postgresql-madlib/">MADlib - data analysis extension for postgresql</a></h2>
-      
-    </p>
-
     <span rel="author" itemscope itemprop="author" itemtype="http://schema.org/Person" />
       <link itemprop="url" href="https://petrushev.github.io/" />
       <meta itemprop="name" content="Baze Petrushev" />
     </span>
 
-    <p class="meta">
-      <time pubdate  datetime="2013-07-13"
-            itemprop="datePublished" itemtype="http://schema.org/Date" >
-        <span class="glyphicon glyphicon-time"></span>
-        published: 13 July, 2013
-      </time>
+
+        
+          <time pubdate  datetime="2013-07-13"
+                itemprop="dateCreated" itemtype="http://schema.org/Date" >
+          </time>
+          <time pubdate  datetime="2013-07-13"
+                itemprop="dateModified" itemtype="http://schema.org/Date" >
+          </time>
+        
+
+        <span itemscope itemprop="specialty" itemtype="http://schema.org/Specialty" />
+          <meta itemprop="name" content="Software Technology" />
+        </span>
+      </p>
+
+      <h4>
+        Tag: <span itemscope itemprop="about"
+                   itemtype="http://schema.org/Thing" ><code itemprop="name">madlib</code>
+      </span></h4>
+      
+        
+  <div class="blog-post col-md-8" >
+    <p class="headline">
+      <h2><a href="../../blog/data-analysis-extension-for-postgresql-madlib/">MADlib - data analysis extension for postgresql</a></h2>
     </p>
 
-    <hr/>
-
-    <div  itemprop="articleBody">
-    
-        <p>I was trying to build an in-database recommendation system using collaborative filtering and postgresql was appealing because its support of array types. But quickly I found myself in need of even basic linear algebra functions, and I only needed summation (both in-line and aggregate), scalar multiplication as well as dot product. I did these in pl/python just to see if my concept was working (it was!), but, as you can guess, it was quite slow.</p>
+    <div><p>I was trying to build an in-database recommendation system using collaborative filtering and postgresql was appealing because its support of array types. But quickly I found myself in need of even basic linear algebra functions, and I only needed summation (both in-line and aggregate), scalar multiplication as well as dot product. I did these in pl/python just to see if my concept was working (it was!), but, as you can guess, it was quite slow.</p>
 <p>A quick search revealed <a href="http://madlib.incubator.apache.org/">MADlib</a>, an extension that can do a lot more than basic linear algebra. It also does descriptive and inferential statistics, linear and logistic regression, k-means clustering and a lot more.</p>
-<p>You can check the code on github, and there is a rpm binary package for CentOS. (I work on arch linux, so I just needed to extract the package with rpmextract and then copy it to my root.) After installation, look for the bin/madpack binary for deployment to [. . .]
-    
-    </div>
-
-    
+<p>You can check the code on github, and there is a rpm binary package for CentOS. (I work on arch linux, so I just needed to extract the package with rpmextract and then copy it to my root.) After installation, look for the bin/madpack binary for deployment to [. . .]</div>
 
   </div>
 
+        <link itemprop="significantLink" href="https://petrushev.github.io/blog/data-analysis-extension-for-postgresql-madlib" />
       
     </div>
 

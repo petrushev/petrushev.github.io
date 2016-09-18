@@ -65,293 +65,109 @@
     <div class="row">
       
 	    
-  <div class="blog-post col-md-8" itemscope itemtype="http://schema.org/Article">
+  <div class="blog-post col-md-8" >
     <p class="headline">
-      
-          <h2  itemprop="headline" ><a href="../../../blog/pypy-and-the-future-of-interpreted-languages/">PyPy and the future of interpreted languages</a></h2>
-      
+      <h2><a href="../../../blog/pypy-and-the-future-of-interpreted-languages/">PyPy and the future of interpreted languages</a></h2>
     </p>
 
-    <span rel="author" itemscope itemprop="author" itemtype="http://schema.org/Person" />
-      <link itemprop="url" href="https://petrushev.github.io/" />
-      <meta itemprop="name" content="Baze Petrushev" />
-    </span>
-
-    <p class="meta">
-      <time pubdate  datetime="2013-09-27"
-            itemprop="datePublished" itemtype="http://schema.org/Date" >
-        <span class="glyphicon glyphicon-time"></span>
-        published: 27 September, 2013
-      </time>
-    </p>
-
-    <hr/>
-
-    <div  itemprop="articleBody">
-    
-        <p>PyPy is Python implemented in Python. This means that the interpreter is written in Python, but what started as an experimental idea turned into a fast, efficient Python implementation with a JIT compiler that has the potential to implement other dynamic interpreted languages as well.</p>
+    <div><p>PyPy is Python implemented in Python. This means that the interpreter is written in Python, but what started as an experimental idea turned into a fast, efficient Python implementation with a JIT compiler that has the potential to implement other dynamic interpreted languages as well.</p>
 <p>Implementation of the Python 2 specification is done in RPython – the so-called restricted Python, which is a stripped down version. The constraints that RPython has on objects make it easier to infer their types. The PyPy tool chain then has an easy time translating the RPython program to C, JVM bytecode or CIL. It also builds a JIT compiler in the resulting interpreter.</p>
 <p>PyPy is capable of running any common Python code.</p>
 <h3>Speed</h3>
-<p>First and foremost – speed. PyPy's website maintains a page that's updated at each PyPy version which contains the accomplishments – various benchmarks and how much faster it is than those compared with CPython. These are kinda assumed, [. . .]
-    
-    </div>
-
-    
+<p>First and foremost – speed. PyPy's website maintains a page that's updated at each PyPy version which contains the accomplishments – various benchmarks and how much faster it is than those compared with CPython. These are kinda assumed, [. . .]</div>
 
   </div>
 
       
 	    
-  <div class="blog-post col-md-8" itemscope itemtype="http://schema.org/Article">
+  <div class="blog-post col-md-8" >
     <p class="headline">
-      
-          <h2  itemprop="headline" ><a href="../../../blog/ccc-breaks-the-apple-touchid/">CCC breaks the Apple TouchID</a></h2>
-      
+      <h2><a href="../../../blog/ccc-breaks-the-apple-touchid/">CCC breaks the Apple TouchID</a></h2>
     </p>
 
-    <span rel="author" itemscope itemprop="author" itemtype="http://schema.org/Person" />
-      <link itemprop="url" href="https://petrushev.github.io/" />
-      <meta itemprop="name" content="Baze Petrushev" />
-    </span>
-
-    <p class="meta">
-      <time pubdate  datetime="2013-09-23"
-            itemprop="datePublished" itemtype="http://schema.org/Date" >
-        <span class="glyphicon glyphicon-time"></span>
-        published: 23 September, 2013
-      </time>
-    </p>
-
-    <hr/>
-
-    <div  itemprop="articleBody">
-    
-        <p>Germany's Chaos Computer Club announced that their biometrics team successfully bypassed Apple's TouchID biometrics login mechanism, thus showing that the fingerprint method is unsuitable for access control.</p>
+    <div><p>Germany's Chaos Computer Club announced that their biometrics team successfully bypassed Apple's TouchID biometrics login mechanism, thus showing that the fingerprint method is unsuitable for access control.</p>
 <p>Their report states:
 “Biometrics is fundamentally a technology designed for oppression and control, not for securing everyday device access. [...] Forcing you to give up your (hopefully long) passcode is much harder under most jurisdictions than just casually swiping your phone over your handcuffed hands.“</p>
-
-    
-    </div>
-
-    
+</div>
 
   </div>
 
       
 	    
-  <div class="blog-post col-md-8" itemscope itemtype="http://schema.org/Article">
+  <div class="blog-post col-md-8" >
     <p class="headline">
-      
-          <h2  itemprop="headline" ><a href="../../../blog/postgresql-9-3-preview/">Postgresql 9.3 preview</a></h2>
-      
+      <h2><a href="../../../blog/postgresql-9-3-preview/">Postgresql 9.3 preview</a></h2>
     </p>
 
-    <span rel="author" itemscope itemprop="author" itemtype="http://schema.org/Person" />
-      <link itemprop="url" href="https://petrushev.github.io/" />
-      <meta itemprop="name" content="Baze Petrushev" />
-    </span>
-
-    <p class="meta">
-      <time pubdate  datetime="2013-08-02"
-            itemprop="datePublished" itemtype="http://schema.org/Date" >
-        <span class="glyphicon glyphicon-time"></span>
-        published: 02 August, 2013
-      </time>
-    </p>
-
-    <hr/>
-
-    <div  itemprop="articleBody">
-    
-        <p>A release candidate for the newest version of Postgres was shipped this week. For me personally, the difference with this release is not that drastic compared to those new features added on 9.0, 9.1 and 9.2 which marked a new era, not just for Postgres, but for all RDBMS, especially now in the NoSQL hype. Heck, some of the features, like LISTEN/NOTIFY publish notification on events, are still missing from most of the so-called high-performance key-value or document datastores.</p>
+    <div><p>A release candidate for the newest version of Postgres was shipped this week. For me personally, the difference with this release is not that drastic compared to those new features added on 9.0, 9.1 and 9.2 which marked a new era, not just for Postgres, but for all RDBMS, especially now in the NoSQL hype. Heck, some of the features, like LISTEN/NOTIFY publish notification on events, are still missing from most of the so-called high-performance key-value or document datastores.</p>
 <p>What I admire most about the Postgres community is its ability to develop on different features and not just focus on what some BDFL think is an important goal. Thus, changes in the new version, as well as always, occurred on all fronts: SQL semantics, special datatypes features, view-related features, replication and administration.</p>
 <h3>JSON</h3>
-<p>The 9.2 version saw the addition of JSON datatype, perceived to give great boost to schema-less data usage of Postgres. Of course, we could [. . .]
-    
-    </div>
-
-    
+<p>The 9.2 version saw the addition of JSON datatype, perceived to give great boost to schema-less data usage of Postgres. Of course, we could [. . .]</div>
 
   </div>
 
       
 	    
-  <div class="blog-post col-md-8" itemscope itemtype="http://schema.org/Article">
+  <div class="blog-post col-md-8" >
     <p class="headline">
-      
-          <h2  itemprop="headline" ><a href="../../../blog/data-analysis-extension-for-postgresql-madlib/">MADlib - data analysis extension for postgresql</a></h2>
-      
+      <h2><a href="../../../blog/data-analysis-extension-for-postgresql-madlib/">MADlib - data analysis extension for postgresql</a></h2>
     </p>
 
-    <span rel="author" itemscope itemprop="author" itemtype="http://schema.org/Person" />
-      <link itemprop="url" href="https://petrushev.github.io/" />
-      <meta itemprop="name" content="Baze Petrushev" />
-    </span>
-
-    <p class="meta">
-      <time pubdate  datetime="2013-07-13"
-            itemprop="datePublished" itemtype="http://schema.org/Date" >
-        <span class="glyphicon glyphicon-time"></span>
-        published: 13 July, 2013
-      </time>
-    </p>
-
-    <hr/>
-
-    <div  itemprop="articleBody">
-    
-        <p>I was trying to build an in-database recommendation system using collaborative filtering and postgresql was appealing because its support of array types. But quickly I found myself in need of even basic linear algebra functions, and I only needed summation (both in-line and aggregate), scalar multiplication as well as dot product. I did these in pl/python just to see if my concept was working (it was!), but, as you can guess, it was quite slow.</p>
+    <div><p>I was trying to build an in-database recommendation system using collaborative filtering and postgresql was appealing because its support of array types. But quickly I found myself in need of even basic linear algebra functions, and I only needed summation (both in-line and aggregate), scalar multiplication as well as dot product. I did these in pl/python just to see if my concept was working (it was!), but, as you can guess, it was quite slow.</p>
 <p>A quick search revealed <a href="http://madlib.incubator.apache.org/">MADlib</a>, an extension that can do a lot more than basic linear algebra. It also does descriptive and inferential statistics, linear and logistic regression, k-means clustering and a lot more.</p>
-<p>You can check the code on github, and there is a rpm binary package for CentOS. (I work on arch linux, so I just needed to extract the package with rpmextract and then copy it to my root.) After installation, look for the bin/madpack binary for deployment to [. . .]
-    
-    </div>
-
-    
+<p>You can check the code on github, and there is a rpm binary package for CentOS. (I work on arch linux, so I just needed to extract the package with rpmextract and then copy it to my root.) After installation, look for the bin/madpack binary for deployment to [. . .]</div>
 
   </div>
 
       
 	    
-  <div class="blog-post col-md-8" itemscope itemtype="http://schema.org/Article">
+  <div class="blog-post col-md-8" >
     <p class="headline">
-      
-          <h2  itemprop="headline" ><a href="../../../blog/moved-to-archlinux/">Moved to Arch Linux</a></h2>
-      
+      <h2><a href="../../../blog/moved-to-archlinux/">Moved to Arch Linux</a></h2>
     </p>
 
-    <span rel="author" itemscope itemprop="author" itemtype="http://schema.org/Person" />
-      <link itemprop="url" href="https://petrushev.github.io/" />
-      <meta itemprop="name" content="Baze Petrushev" />
-    </span>
-
-    <p class="meta">
-      <time pubdate  datetime="2012-10-11"
-            itemprop="datePublished" itemtype="http://schema.org/Date" >
-        <span class="glyphicon glyphicon-time"></span>
-        published: 11 October, 2012
-      </time>
-    </p>
-
-    <hr/>
-
-    <div  itemprop="articleBody">
-    
-        <p>So I finally said goodbye to (k)ubuntu. It was a long ride, and lately I didn't like the direction it was heading: pushing unity and ads are just part of the symptoms of a bigger problem of politics. Anyway, I decided on Arch Linux - a distribution that is focused more on technical simplicity rather than wide-net usability.</p>
+    <div><p>So I finally said goodbye to (k)ubuntu. It was a long ride, and lately I didn't like the direction it was heading: pushing unity and ads are just part of the symptoms of a bigger problem of politics. Anyway, I decided on Arch Linux - a distribution that is focused more on technical simplicity rather than wide-net usability.</p>
 <p>It actually works incredibly good, it installs only the packages you need and not a single library more. I use KDE, and I was very surprised to see how well the build integrates with the rest of the system, even better than Kubuntu! I am a big fan of apt based packaging, and I must say that the pacman + aur system is at least on par.</p>
 <p>Combined with the power of wiki pages they have, which are in abundance and probably contain solution for every common problem one may encounter, I would say this makes a sound alternative of Linux distribution for every advanced user.</p>
-
-    
-    </div>
-
-    
+</div>
 
   </div>
 
       
 	    
-  <div class="blog-post col-md-8" itemscope itemtype="http://schema.org/Article">
+  <div class="blog-post col-md-8" >
     <p class="headline">
-      
-          <h2  itemprop="headline" ><a href="../../../blog/how-go-came-to-life-and-why-is-it-the-way-it-is/">How Go came to life and why is it the way it is</a></h2>
-      
+      <h2><a href="../../../blog/how-go-came-to-life-and-why-is-it-the-way-it-is/">How Go came to life and why is it the way it is</a></h2>
     </p>
 
-    <span rel="author" itemscope itemprop="author" itemtype="http://schema.org/Person" />
-      <link itemprop="url" href="https://petrushev.github.io/" />
-      <meta itemprop="name" content="Baze Petrushev" />
-    </span>
-
-    <p class="meta">
-      <time pubdate  datetime="2012-09-01"
-            itemprop="datePublished" itemtype="http://schema.org/Date" >
-        <span class="glyphicon glyphicon-time"></span>
-        published: 01 September, 2012
-      </time>
-    </p>
-
-    <hr/>
-
-    <div  itemprop="articleBody">
-    
-        <p>Wonderful story about the Go programming language, told by one of its creators, Rob Pike. He tells us the reason why Go has less features than C++, and why he think it is more powerful; as well as the circumstances of some other design decisions.</p>
-
-    
-    </div>
-
-    
+    <div><p>Wonderful story about the Go programming language, told by one of its creators, Rob Pike. He tells us the reason why Go has less features than C++, and why he think it is more powerful; as well as the circumstances of some other design decisions.</p>
+</div>
 
   </div>
 
       
 	    
-  <div class="blog-post col-md-8" itemscope itemtype="http://schema.org/Article">
+  <div class="blog-post col-md-8" >
     <p class="headline">
-      
-          <h2  itemprop="headline" ><a href="../../../blog/mysql-becomes-more-closed/">Mysql becomes more closed</a></h2>
-      
+      <h2><a href="../../../blog/mysql-becomes-more-closed/">Mysql becomes more closed</a></h2>
     </p>
 
-    <span rel="author" itemscope itemprop="author" itemtype="http://schema.org/Person" />
-      <link itemprop="url" href="https://petrushev.github.io/" />
-      <meta itemprop="name" content="Baze Petrushev" />
-    </span>
-
-    <p class="meta">
-      <time pubdate  datetime="2012-09-01"
-            itemprop="datePublished" itemtype="http://schema.org/Date" >
-        <span class="glyphicon glyphicon-time"></span>
-        published: 01 September, 2012
-      </time>
-    </p>
-
-    <hr/>
-
-    <div  itemprop="articleBody">
-    
-        <p>Oracle moves Mysql towards closed source software as it held back test cases in the latest release of the popular RDBMS. This means that, even though there are some bug fixes in the releas, there is no assurance for the developers as there are no test cases for the reported bugs.</p>
+    <div><p>Oracle moves Mysql towards closed source software as it held back test cases in the latest release of the popular RDBMS. This means that, even though there are some bug fixes in the releas, there is no assurance for the developers as there are no test cases for the reported bugs.</p>
 <p>This is only the latest move Oracle makes in alienating the community. OpenOffice lost its foothold after large part of its maintainers decided to fork it and create LibreOffice. As for mysql, it has already been forked to MariaDB, which is one of the recommendations for its users.</p>
-
-    
-    </div>
-
-    
+</div>
 
   </div>
 
       
 	    
-  <div class="blog-post col-md-8" itemscope itemtype="http://schema.org/Article">
+  <div class="blog-post col-md-8" >
     <p class="headline">
-      
-          <h2  itemprop="headline" ><a href="../../../blog/step-forward-in-adopting-anonymous-sim-cards-in-europe/">Step forward in adopting anonymous SIM cards in Europe</a></h2>
-      
+      <h2><a href="../../../blog/step-forward-in-adopting-anonymous-sim-cards-in-europe/">Step forward in adopting anonymous SIM cards in Europe</a></h2>
     </p>
 
-    <span rel="author" itemscope itemprop="author" itemtype="http://schema.org/Person" />
-      <link itemprop="url" href="https://petrushev.github.io/" />
-      <meta itemprop="name" content="Baze Petrushev" />
-    </span>
-
-    <p class="meta">
-      <time pubdate  datetime="2012-08-23"
-            itemprop="datePublished" itemtype="http://schema.org/Date" >
-        <span class="glyphicon glyphicon-time"></span>
-        published: 23 August, 2012
-      </time>
-    </p>
-
-    <hr/>
-
-    <div  itemprop="articleBody">
-    
-        <p>Germany's rising Pirate Party made a step towards anonymous SIM card activation after it filed an appeal in the European Court of Human Rights in Strasbourg, stating that anonymous communication is protected under the European Convention on Human Rights' right to private life.</p>
+    <div><p>Germany's rising Pirate Party made a step towards anonymous SIM card activation after it filed an appeal in the European Court of Human Rights in Strasbourg, stating that anonymous communication is protected under the European Convention on Human Rights' right to private life.</p>
 <p>One should note that this court is not a European Union institution, it is part of the Council of Europe which consists of 47 countries, thus, the legal decision of this court will not be binding to Germany, however, knowing the political climate there, one should expect that there will be repercussions on its government if it doesn't follow the courts findings.</p>
-
-    
-    </div>
-
-    
+</div>
 
   </div>
 

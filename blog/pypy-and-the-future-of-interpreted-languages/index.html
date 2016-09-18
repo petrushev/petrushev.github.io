@@ -65,15 +65,15 @@
   
   <div class="blog-post col-md-8" itemscope itemtype="http://schema.org/Article">
     <p class="headline">
-      
-        <h2 itemprop="headline" >PyPy and the future of interpreted languages</h2>
-      
+      <h2 itemprop="headline" >PyPy and the future of interpreted languages</h2>
     </p>
 
+    
     <span rel="author" itemscope itemprop="author" itemtype="http://schema.org/Person" />
       <link itemprop="url" href="https://petrushev.github.io/" />
       <meta itemprop="name" content="Baze Petrushev" />
     </span>
+
 
     <p class="meta">
       <time pubdate  datetime="2013-09-27"
@@ -85,9 +85,7 @@
 
     <hr/>
 
-    <div  itemprop="articleBody">
-    
-        <p>PyPy is Python implemented in Python. This means that the interpreter is written in Python, but what started as an experimental idea turned into a fast, efficient Python implementation with a JIT compiler that has the potential to implement other dynamic interpreted languages as well.</p>
+    <div itemprop="articleBody"><p>PyPy is Python implemented in Python. This means that the interpreter is written in Python, but what started as an experimental idea turned into a fast, efficient Python implementation with a JIT compiler that has the potential to implement other dynamic interpreted languages as well.</p>
 <p>Implementation of the Python 2 specification is done in RPython – the so-called restricted Python, which is a stripped down version. The constraints that RPython has on objects make it easier to infer their types. The PyPy tool chain then has an easy time translating the RPython program to C, JVM bytecode or CIL. It also builds a JIT compiler in the resulting interpreter.</p>
 <p>PyPy is capable of running any common Python code.</p>
 <h3>Speed</h3>
@@ -109,25 +107,20 @@
 <h3>Sprawl</h3>
 <p>A couple of months ago, PyPy saw its first release on the ARM platform. So you can run PyPy on Raspberry Pi. This leaves the ARM door open for any language optimal enough as PyPy, and there are some languages already implemented with the RPython toolchain.</p>
 <p>Most notably, there is Topaz, which is a PyPy-like implementation of Ruby. An interesting implementation of PyPy is created with JavaScript as a backend, PyPy.js. Conversely, a GSOC project was done as Javascript implementation in Python, lang-js, but currently is not in development. As a pet project, the people from PyPy also implemented an incomplete PHP implementation with the RPython translator. And we can see that someone did their bachelor thesis implementing Pyrolog – a Prolog implementation in RPython.</p>
+</div>
 
     
-    </div>
 
     
+      <hr/>
+      tags:
       
-
+        <a href="/tag/python"><code>python</code></a>
       
-        <hr/>
-        tags:
-        
-          <a href="/tag/python"><code>python</code></a>
-        
-          <a href="/tag/pypy"><code>pypy</code></a>
-        
-          <a href="/tag/jit"><code>jit</code></a>
-        
+        <a href="/tag/pypy"><code>pypy</code></a>
       
-
+        <a href="/tag/jit"><code>jit</code></a>
+      
     
 
   </div>
