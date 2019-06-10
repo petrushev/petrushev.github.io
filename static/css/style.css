@@ -14,9 +14,3 @@ code {
 div.page {}
 
 blockquote {font-size: 13.0px;}
-
-td {padding-left:0px; padding-right:6px;}
-table {background-color: #e7efff }
-
-div[itemprop=articleBody] > p > img {display:block;max-width:100%;height:auto}
-

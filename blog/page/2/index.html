@@ -76,7 +76,7 @@
 <p>Implementation of the Python 2 specification is done in RPython – the so-called restricted Python, which is a stripped down version. The constraints that RPython has on objects make it easier to infer their types. The PyPy tool chain then has an easy time translating the RPython program to C, JVM bytecode or CIL. It also builds a JIT compiler in the resulting interpreter.</p>
 <p>PyPy is capable of running any common Python code.</p>
 <h3>Speed</h3>
-<p>First and foremost – speed. PyPy's website maintains a page that's updated at each PyPy version which contains the accomplishments – various benchmarks and how much faster it is than those compared with CPython. These are kinda assumed, [. . .]</div>
+<p>First and foremost – speed. PyPy's website maintains a page that's updated at each PyPy version which contains the accomplishments – various benchmarks and how much faster it is than those compared with CPython. These are kinda assumed,[. . .]</div>
 
   </div>
 
@@ -104,7 +104,7 @@
     <div><p>A release candidate for the newest version of Postgres was shipped this week. For me personally, the difference with this release is not that drastic compared to those new features added on 9.0, 9.1 and 9.2 which marked a new era, not just for Postgres, but for all RDBMS, especially now in the NoSQL hype. Heck, some of the features, like LISTEN/NOTIFY publish notification on events, are still missing from most of the so-called high-performance key-value or document datastores.</p>
 <p>What I admire most about the Postgres community is its ability to develop on different features and not just focus on what some BDFL think is an important goal. Thus, changes in the new version, as well as always, occurred on all fronts: SQL semantics, special datatypes features, view-related features, replication and administration.</p>
 <h3>JSON</h3>
-<p>The 9.2 version saw the addition of JSON datatype, perceived to give great boost to schema-less data usage of Postgres. Of course, we could [. . .]</div>
+<p>The 9.2 version saw the addition of JSON datatype, perceived to give great boost to schema-less data usage of Postgres. Of course, we could[. . .]</div>
 
   </div>
 
@@ -117,7 +117,7 @@
 
     <div><p>I was trying to build an in-database recommendation system using collaborative filtering and postgresql was appealing because its support of array types. But quickly I found myself in need of even basic linear algebra functions, and I only needed summation (both in-line and aggregate), scalar multiplication as well as dot product. I did these in pl/python just to see if my concept was working (it was!), but, as you can guess, it was quite slow.</p>
 <p>A quick search revealed <a href="http://madlib.incubator.apache.org/">MADlib</a>, an extension that can do a lot more than basic linear algebra. It also does descriptive and inferential statistics, linear and logistic regression, k-means clustering and a lot more.</p>
-<p>You can check the code on github, and there is a rpm binary package for CentOS. (I work on arch linux, so I just needed to extract the package with rpmextract and then copy it to my root.) After installation, look for the bin/madpack binary for deployment to [. . .]</div>
+<p>You can check the code on github, and there is a rpm binary package for CentOS. (I work on arch linux, so I just needed to extract the package with rpmextract and then copy it to my root.) After installation, look for the bin/madpack binary for deployment to[. . .]</div>
 
   </div>
 
